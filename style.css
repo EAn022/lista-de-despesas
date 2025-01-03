@@ -161,3 +161,32 @@ form button{
 
 
 
+/* tabela de despesas _-_-_-_-_-_-_- _-_-_-_-_-_-_- _-_-_-_-_-_-_- _-_-_-_-_-_-_- */
+
+.tabela-despesas{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead{
+    background-color: var(--color-primary);
+}
+
+th{
+    font-weight: 600;
+    color: white;
+}
+
+td, th{
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+tr:nth-child(even){
+    background-color: aliceblue;
+}
+
+
+
+
+
