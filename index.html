@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reggisty</title>
+    <link rel="icon" type="imagex/x-svg" href="img/Vector.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="init()">
+    <header>
+        <img src="img/Vector.svg" alt="icone logo">
+        <a href="index.html">Home</a>
+        <a href="consulta.html">Consulta</a>
+        <img src="img/Menu.svg" alt="icone menu">
+    </header>
+    <section>
+        <h1>Consulta de despesas</h1>
+
+        <form action="">
+            <fieldset>
+                <legend>Data</legend>
+
+                <select name="ano" id="ano" >
+                    <option value="">Ano</option>
+                </select>
+                <select name="mes" id="mes">
+                    <option value="">Mês</option>
+                </select>
+                <input type="number" id="dia" placeholder="Dia" min="1" max="31">
+            </fieldset>
+
+            <fieldset>
+                <legend>Registro</legend>
+
+                <select name="tipo" id="tipo">
+                    <option value="">Tipo</option>
+                </select>
+                <input type="text" name="descricao" id="descricao" placeholder="Descrição">
+                <input type="number" name="custo" id="custo" placeholder="Valor">
+                
+                <button class="adcionar" type="button" onclick="cadastrarDespesa()"></button>
+            </fieldset>
+        </form>
+        
+    </section>
+    
+    <div class="modal" id="modal" onclick="clicarForaModal(this)">
+        <div class="modal-c">
+            <div id="header-modal" class="header-modal">
+                <span id="close-modal" onclick="esconderModal()">&times</span>
+            </div>
+            <div id="conteudo-modal" class="conteudo-modal"></div>
+            <div id="footer-modal" class="footer-modal">
+                <button type="button" id="btn-modal" onclick="esconderModal()"></button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+:root{
+    --color-primary: #008cff;
+    --color-secundary: #7e7e7e;
+    --color-alert: #ff0000;
+}
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--color-secundary);
+    font-weight: 300;
+}
+
+body{
+    margin: 0;
+}
+
+/* header _-_-_-_-_-_-_- _-_-_-_-_-_-_- _-_-_-_-_-_-_- _-_-_-_-_-_-_- */
+
+header{
+    height: 64px;
+    background-color: var(--color-primary);
+    text-align: justify;
+    position: relative;
+    padding: 0 24px;
+}
+
+header::after{
+    content: '';
+    display: inline-block;
+    width: 100%;
+}
+
+header > img{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 36px;
+}
+
+
+header > a{
+  color: white;
+  text-decoration: none;
+}
+
+/* section _-_-_-_-_-_-_- _-_-_-_-_-_-_- _-_-_-_-_-_-_- _-_-_-_-_-_-_- */
+
+section{
+    padding: 0 20%;
+}
+
+fieldset{
+    border-radius: 5px;
+    margin-bottom: 12px;
+}
+
+legend{
+    color: var(--color-secundary);
+}
+
+select, input{
+    height: 36px;
+    margin: 12px;
+    padding:0 12px;
+    color: var(--color-secundary);
+    border: 1px solid var(--color-secundary);
+    border-radius: 5px;
+    line-height: 40px;
+}
+
+form button{
+    width: 36px;
+    height: 36px;
+    padding: 12px;
+    background: var(--color-primary) url(img/Plus.svg) no-repeat center ;
+    border: none;
+    border-radius: 5px;
+    display: inline;
+}
+
+.adcionar{
+    background: var(--color-primary) url(img/Plus.svg) no-repeat center ;
+}
+
+.pesquisar{
+    background: var(--color-primary) url(img/Search.svg) no-repeat center ;
+}
+
+
+
+/* modal _-_-_-_-_-_-_- _-_-_-_-_-_-_- _-_-_-_-_-_-_- _-_-_-_-_-_-_- */
+
+.modal{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #7e7e7ea8;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.modal-c{
+    width: 500px;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    overflow: auto;
+}
+
+.header-modal{
+    background-color: var(--color-alert);
+    height: 50px;
+    text-align: end;
+    padding: 0 6px;
+}
+
+.header-modal > span{
+    font-size: 33px;
+    color: rgb(255, 255, 255);
+}
+
+.header-modal > span:hover{
+    cursor: pointer;
+}
+
+.conteudo-modal{
+    background-color: white;
+    min-height: 40px;
+    text-align: center;
+    padding: 24px 0 0 0;
+}
+
+.footer-modal{
+    background-color: var(--color-alert);
+    height: 40px;
+}
+
+.footer-modal > button{
+    display: block;
+    margin: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    padding: 4px 12px;
+    border: none;
+    border-radius: 5px;
+}
+
+.footer-modal > button:hover{
+    cursor: pointer;
+}
+
+.sucesso-modal{
+    background-color: var(--color-primary);
+}
+
+
+
