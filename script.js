@@ -106,19 +106,38 @@ function carregarRegistros(){
 
     despesas = bd.recuperarTodosRegistros()
 
-    console.log(despesas)
-
-    let listaDespesa = document.getElementById('lista-despesa')
-    despesas.forEach((d)=>{
-        let tableRow = listaDespesa.insertRow()
-        tableRow.insertCell(0).textContent =`${d.dia}/${d.mes}/${d.ano}`
-        tableRow.insertCell(1).textContent = d.tipo
-        tableRow.insertCell(2).textContent = d.descricao
-        tableRow.insertCell(3).textContent = `R$${d.custo}`
-    }) 
+    preencherTabela(despesas)
 }
 
+function pesquisarDespesas(){
+    let dia = document.getElementById('dia')
+    let mes = document.getElementById('mes')
+    let ano = document.getElementById('ano')
+    let tipo = document.getElementById('tipo')
+    let descricao = document.getElementById('descricao')
+    let custo = document.getElementById('custo')
+    
+    let despesas = new Despesa(dia.value, mes.value, ano.value, tipo.value, descricao.value, custo.value)
+    
+    let bd = new BD()
+    let despesasFiltradas = bd.pesquisarDespesa(despesas)
+    
+    preencherTabela(despesasFiltradas)
+    
+}
 
+function preencherTabela(despesas){
+    let tableListaDespesa = document.getElementById('lista-despesa')
+    tableListaDespesa.innerHTML = ''
+
+    despesas.forEach((despes)=>{
+        let tableRow = tableListaDespesa.insertRow()
+        tableRow.insertCell(0).textContent =`${despes.dia}/${despes.mes}/${despes.ano}`
+        tableRow.insertCell(1).textContent = despes.tipo
+        tableRow.insertCell(2).textContent = despes.descricao
+        tableRow.insertCell(3).textContent = `R$${despes.custo}`
+    }) 
+}
 
 class Despesa{
     constructor(dia,mes,ano,tipo,descricao,custo){
@@ -174,5 +193,21 @@ class BD{
         }
 
        return despesas
+    }
+
+    pesquisarDespesa(despesa){
+        let despesasFiltradas = []
+        despesasFiltradas = this.recuperarTodosRegistros()
+        
+        if (despesa.dia != '') despesasFiltradas = despesasFiltradas.filter((desp) => desp.dia == despesa.dia)
+        if (despesa.mes != '') despesasFiltradas = despesasFiltradas.filter((desp) => desp.mes == despesa.mes)
+        if (despesa.ano != '') despesasFiltradas = despesasFiltradas.filter((desp) => desp.ano == despesa.ano)
+        if (despesa.tipo != '') despesasFiltradas = despesasFiltradas.filter(desp => desp.tipo == despesa.tipo)
+        if (despesa.descricao != '') despesasFiltradas = despesasFiltradas.filter(desp => desp.descricao == despesa.descricao)
+        if (despesa.custo != '') despesasFiltradas = despesasFiltradas.filter(desp => desp.custo == despesa.custo)
+
+        
+        
+        return despesasFiltradas
     }
 }
