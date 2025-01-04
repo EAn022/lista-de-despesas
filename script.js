@@ -100,13 +100,23 @@ function clicarForaModal(element){
     }
 }
 
-function carregarRegistros(){
+function carregarRegistros(despesas = [], filtro = false){
     let bd = new BD()
-    let despesas = []
 
-    despesas = bd.recuperarTodosRegistros()
+    if (despesas.length == 0 && filtro == false){
+        despesas = bd.recuperarTodosRegistros()
+    }
 
-    preencherTabela(despesas)
+    let tableListaDespesa = document.getElementById('lista-despesa')
+    tableListaDespesa.innerHTML = ''
+
+    despesas.forEach((despes)=>{
+        let tableRow = tableListaDespesa.insertRow()
+        tableRow.insertCell(0).textContent =`${despes.dia}/${despes.mes}/${despes.ano}`
+        tableRow.insertCell(1).textContent = despes.tipo
+        tableRow.insertCell(2).textContent = despes.descricao
+        tableRow.insertCell(3).textContent = `R$${despes.custo}`
+    }) 
 }
 
 function pesquisarDespesas(){
@@ -122,22 +132,9 @@ function pesquisarDespesas(){
     let bd = new BD()
     let despesasFiltradas = bd.pesquisarDespesa(despesas)
     
-    preencherTabela(despesasFiltradas)
-    
+    carregarRegistros(despesasFiltradas, true)    
 }
 
-function preencherTabela(despesas){
-    let tableListaDespesa = document.getElementById('lista-despesa')
-    tableListaDespesa.innerHTML = ''
-
-    despesas.forEach((despes)=>{
-        let tableRow = tableListaDespesa.insertRow()
-        tableRow.insertCell(0).textContent =`${despes.dia}/${despes.mes}/${despes.ano}`
-        tableRow.insertCell(1).textContent = despes.tipo
-        tableRow.insertCell(2).textContent = despes.descricao
-        tableRow.insertCell(3).textContent = `R$${despes.custo}`
-    }) 
-}
 
 class Despesa{
     constructor(dia,mes,ano,tipo,descricao,custo){
