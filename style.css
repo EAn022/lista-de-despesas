@@ -86,6 +86,10 @@ form button{
     background: var(--color-primary) url(img/Search.svg) no-repeat center ;
 }
 
+.pesquisar:hover{
+    cursor: pointer;
+}
+
 
 
 /* modal _-_-_-_-_-_-_- _-_-_-_-_-_-_- _-_-_-_-_-_-_- _-_-_-_-_-_-_- */
@@ -166,6 +170,7 @@ form button{
 .tabela-despesas{
     width: 100%;
     border-collapse: collapse;
+    border-radius: 5px;
 }
 
 thead{
@@ -186,6 +191,21 @@ tr:nth-child(even){
     background-color: aliceblue;
 }
 
+.tabela-despesas button{
+    display: block;
+    padding: 6px 10px;
+    margin: auto;
+    background: var(--color-alert);
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.tabela-despesas button:hover{
+    cursor: pointer;
+}
 
 
 

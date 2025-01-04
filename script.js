@@ -112,10 +112,18 @@ function carregarRegistros(despesas = [], filtro = false){
 
     despesas.forEach((despes)=>{
         let tableRow = tableListaDespesa.insertRow()
+        let btn = document.createElement('button')
+        btn.textContent = 'X'
+        btn.value = despes.id
+        btn.onclick = function (){
+            bd.removerDespesa(btn.value)
+        }
+
         tableRow.insertCell(0).textContent =`${despes.dia}/${despes.mes}/${despes.ano}`
         tableRow.insertCell(1).textContent = despes.tipo
         tableRow.insertCell(2).textContent = despes.descricao
         tableRow.insertCell(3).textContent = `R$${despes.custo}`
+        tableRow.insertCell(4).appendChild(btn)
     }) 
 }
 
@@ -185,6 +193,7 @@ class BD{
             let despesa = JSON.parse(window.localStorage.getItem(i))
 
             if(despesa){
+                despesa.id = i
                 despesas.push(despesa)
             }
         }
@@ -206,5 +215,10 @@ class BD{
         
         
         return despesasFiltradas
+    }
+
+    removerDespesa(id){
+        window.localStorage.removeItem(id)
+        window.location.reload()
     }
 }
